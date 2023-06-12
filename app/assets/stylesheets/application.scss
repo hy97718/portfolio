@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+@import 'bulma';
+@import 'bulma-extensions';
+.navbar {
+  background-color: rgb(3, 11, 118);
+  position: fixed;
+  width: 100%;
+}
+.navbar-item {
+  color: white;
+  font-size: 30px;
+}
+.button {
+  background-color: rgb(3, 11, 118);
+  color: white;
+}

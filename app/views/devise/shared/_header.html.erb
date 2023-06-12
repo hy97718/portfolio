@@ -1,0 +1,39 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+  <%= link_to root_path, class: "navbar-item" do %>
+    <h1>TOPへ</h1>
+  <% end %>
+  </div>
+  <% if user_signed_in? %>
+      <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+              <%= link_to "ログアウト", destroy_user_session_path, class: "button", method: :delete %>
+              <%# <%= render '/devise/shared/dropdown' %> 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-light" %>
+              </p>
+              <p class="control">
+                <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "button is-warning is-light", method: :post %>
+              </p>
+              <p class="control">
+                <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-light" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</nav>

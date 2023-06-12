@@ -1,0 +1,30 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.first-view {
+  margin-top: auto;
+  background-image: url("view_image.jpg");
+  background-size: cover;
+  padding-bottom: 200px;
+}
+.container {
+  padding: 20px;
+  margin: 30px;
+}
+.firstView-content {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: end;
+}
+.firstView-title {
+  margin-top: 80px;
+  font-size: 65px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+.firstView-image {
+  width: 200px;
+  height: 200px;
+}
