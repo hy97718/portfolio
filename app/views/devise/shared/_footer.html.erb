@@ -1,4 +1,12 @@
 <footer>
+  <div class="footer_fixed_btn">
+    <% if user_signed_in? %>
+    <% else %>
+      <%= link_to  users_guest_sign_in_path, class: "button is-info ", method: :post do %>
+        ゲストログインはこちら！！<br>まずは機能をお試し！
+      <% end %>
+    <% end %>
+  </div>
   <div class="container">
     <p>© 2023 Yui Horinouchi</p>
   </div>

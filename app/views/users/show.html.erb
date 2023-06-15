@@ -1,4 +1,39 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<%= @user.username%>
-
+<div class="account-information">
+  <div class="container">
+    <div class="page-description">
+      ここでは自身のアカウント情報の編集ができます。プロフィールの更新を押すと名前と目標貯金額
+      の設定ができます。アカウントの編集を押すとメールアドレスとパスワードの編集ができます。
+    </div>
+    <h1>設定</h1>
+    <table class="table is-fullwidth" >
+      <tbody>
+        <tr>
+          <td>名前</td>
+          <td><%= @user.username %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td>目標貯金額</td>
+          <td>
+            <% if @user.savings_target.present? %>
+              <%= "#{@user.savings_target.to_s(:delimited)}円" %>
+            <% else %>
+              0円
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>パスワード</td>
+          <td>***********</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <%= link_to "プロフィールの編集", edit_user_path, class: "button is-info is-light" %>
+      <%= link_to "アカウントの編集", user_personal_information_edit_path, class: "button is-info is-light" %>
+    </div>
+  </div>
+</div>

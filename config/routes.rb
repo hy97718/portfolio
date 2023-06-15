@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
   resources :users
+  get 'users/:id/personal_information_edit', to: 'users#personal_information_edit', as: 'user_personal_information_edit'
 end

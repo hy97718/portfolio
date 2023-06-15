@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        username: ユーザー名
+        savings_target: 目標貯金額
+        email: メールアドレス
+        password: パスワード
