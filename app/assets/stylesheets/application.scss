@@ -49,9 +49,14 @@ body {
 .navbar-item {
   color: white;
   font-size: 30px;
+  font-family: fantasy;
 }
 .top-logo {
   margin-left: 10px;
+}
+.navbar-item span {
+  font-family: 'Zen Kurenaido';
+  font-weight: bold;
 }
 .button {
   background-color: rgb(3, 11, 118);
@@ -64,6 +69,7 @@ body {
 .menu-bar {
   margin-right: 10px;
   font-size: 30px;
+  font-family: 'Zen Kurenaido';
 }
 .menu-bar:hover {
   opacity: 0.7;
@@ -109,6 +115,9 @@ body {
 .dropdown_btn.is-open + .dropdown_body {
   display: block;
   z-index: 4;
+}
+footer {
+  margin-top: 100px;
 }
 .footer_fixed_btn .button{
   position: fixed;

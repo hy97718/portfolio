@@ -6,3 +6,8 @@ ja:
         savings_target: 目標貯金額
         email: メールアドレス
         password: パスワード
+
+      location:
+        asset_name: 資産名
+        location_name: 資産場所
+

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
   resources :users
   get 'users/:id/personal_information_edit', to: 'users#personal_information_edit', as: 'user_personal_information_edit'
+  resources :locations
 end

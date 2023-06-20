@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="location-container">
+    <div class="location-header">
+      <h1>資産一覧</h1>
+      <%= link_to new_location_path do %>
+        <i class="fa fa-plus-circle">新規作成</i>
+      <% end %>
+    </div>
+    <% @locations.each do |location| %>
+      <table class="table is-fullwidth" >
+        <tbody>
+          <tr>
+            <td>
+              <div class="location-items">
+                <div class="location-item">
+                  <% if location.location_name == "現金" %>
+                    <%= image_tag "cash.png", size: "50x50" %>
+                  <% elsif location.location_name == "銀行口座" %>
+                    <%= image_tag "bank_image.png", size: "50x50" %>
+                  <% elsif location.location_name == "クレジットカード" %>
+                    <%= image_tag "credit-card.png", size: "50x50" %>
+                  <% elsif location.location_name == "証券口座" %>
+                    <%= image_tag "investment.png", size: "50x50" %>
+                  <% elsif location.location_name == "電子マネー" %>
+                    <%= image_tag "electoric-money.png", size: "50x50" %>
+                  <% else %>
+                    <%= image_tag "other-money.png", size: "50x50" %>
+                  <% end %>
+                </div>
+                <div class="location-item">
+                  <%= location.location_name %>
+                </div>
+              </div>
+            </td>
+            <td><%= location.asset_name %></td>
+            <td>
+              <%= link_to edit_location_path(location.id) do %>
+                <i class="fas fa-edit">編集</i>
+              <% end %>
+            </td>
+            <td>
+              収支入力
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+

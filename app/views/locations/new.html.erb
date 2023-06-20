@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="location-container">
+    <%= form_with model: @location, local: true do |f| %>
+      <div class="field">
+        <%= f.label :asset_name, "資産名"%>
+        <%= f.text_field :asset_name, class: "input"%>
+      </div>
+      <div class="field">
+        <%= f.label :location_name, "資産場所"%>
+        <%= f.select :location_name,
+        [["現金", "現金"], ["銀行口座", "銀行口座"], ["クレジットカード", "クレジットカード"], ["証券口座", "証券口座"], ["電子マネー", "電子マネー"], ["その他", "その他"]],
+        include_blank: "選択して下さい", class: "select-box" %>
+      </div>
+      <%= f.submit "作成", class: "button is-success" %>
+      <%= link_to "戻る", :back, class: "button is-light" %>
+    <% end %>
+  </div>
+</div>
+

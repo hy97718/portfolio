@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :locations, dependent: :destroy
+  has_many :incomes, dependent: :destroy
+  has_many :expenses, dependent: :destroy
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.username = "ゲストユーザー"

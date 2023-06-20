@@ -10,7 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_10_042626) do
+ActiveRecord::Schema.define(version: 2023_06_17_020009) do
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "expense_name"
+    t.integer "expense_money"
+    t.date "expense_day"
+    t.text "expense_memo"
+    t.integer "user_id"
+    t.integer "location_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location_id"], name: "index_expenses_on_location_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.string "income_name"
+    t.integer "user_id", null: false
+    t.date "income_day"
+    t.integer "income_money"
+    t.string "income_memo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "location_id", null: false
+    t.index ["location_id"], name: "index_incomes_on_location_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "asset_name"
+    t.string "location_name"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_locations_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +61,9 @@ ActiveRecord::Schema.define(version: 2023_06_10_042626) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "expenses", "locations"
+  add_foreign_key "expenses", "users"
+  add_foreign_key "incomes", "locations"
+  add_foreign_key "incomes", "users"
+  add_foreign_key "locations", "users"
 end

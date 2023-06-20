@@ -1,0 +1,43 @@
+// Place all the styles related to the locations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.location-container {
+  padding-top: 100px;
+}
+.location-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0 30px 0;
+}
+.location-header h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+i.fa.fa-plus-circle {
+  font-size: 26px;
+}
+.select-box {
+  height: 50px;
+  width: 100%;
+  border-radius: 5px;
+  border: 0.5px solid gray;
+  box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+}
+.location-field {
+  display: flex;
+  flex-direction: column;
+}
+table  {
+  table-layout: fixed;
+  font-size: 20px;
+}
+tr {
+  border: 0.8px solid gray;
+  box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+}
+td {
+  vertical-align: middle;
+}
+.location-items {
+  margin-left: 10px;
+}
