@@ -11,3 +11,9 @@ ja:
         asset_name: 資産名
         location_name: 資産場所
 
+      income:
+        income_name: 入金名
+        income_day: 入金日
+        income_money: 入金の金額
+        income_memo: 入金メモ
+

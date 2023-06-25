@@ -1,0 +1,15 @@
+// Place all the styles related to the incomes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.incomes-form {
+  padding-top: 100px;
+}
+.income-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0 30px 0;
+}
+.income-header h1 {
+  font-size: 26px;
+  font-weight: bold;
+}

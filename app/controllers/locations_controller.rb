@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = current_user.locations.all
+    @locations = Location.includes(:incomes, :expenses).where(user_id: current_user.id)
   end
 
   def new

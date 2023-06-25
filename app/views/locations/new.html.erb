@@ -1,6 +1,7 @@
 <div class="container">
   <div class="location-container">
     <%= form_with model: @location, local: true do |f| %>
+      <%= render 'devise/shared/error_messages', resource: @location %>
       <div class="field">
         <%= f.label :asset_name, "資産名"%>
         <%= f.text_field :asset_name, class: "input"%>

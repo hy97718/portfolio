@@ -1,0 +1,32 @@
+<h1>Incomes#show</h1>
+<p>Find me in app/views/incomes/show.html.erb</p>
+<div class="incomes-form">
+  <div class="container">
+    <table class="table is-fullwidth is-hoverable" >
+      <tbody>
+        <tr>
+          <td>
+            <%= render 'devise/shared/location_items', location_name: @location.location_name %>
+          </td>
+          <td><%= @income.income_day %></td>
+          <td>
+            <%= @income.income_name %>
+          </td>
+          <td>
+            <% if @income.income_money.present? %>
+              <%= "#{@income.income_money.to_s(:delimited)}円" %>
+            <% end %>
+          </td>
+          <td><%= @income.income_memo %></td>
+          <td><%= @income.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
+          <td>
+            <%= link_to edit_location_income_path(@location, @income) do %>
+              編集
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "戻る", :back, class: "button is-light" %>
+  </div>
+</div>

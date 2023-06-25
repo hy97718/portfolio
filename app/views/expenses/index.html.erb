@@ -1,0 +1,33 @@
+<div class="expenses-form">
+  <div class="container">
+    <div class="expense-header">
+      <h1>出金記録一覧</h1>
+      <%= link_to new_location_expense_path do %>
+        <i class="fa fa-plus-circle">新規作成</i>
+      <% end %>
+    </div>
+    <% @expenses.each do |expense| %>
+      <table class="table is-fullwidth is-hoverable" >
+        <tbody>
+          <tr>
+            <td><%= expense.expense_day %></td>
+            <td><%= expense.expense_name %></td>
+            <td>
+              <% if expense.expense_money.present? %>
+                <%= "#{expense.expense_money.to_s(:delimited)}円" %>
+              <% end %>
+            </td>
+            <td><%= expense.expense_memo %></td>
+            <td>
+              <%= link_to edit_location_expense_path(@location, expense) do %>
+                編集
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    <%= link_to "出金記録一覧へ", location_incomes_path, class: "button is-light is-info" %>
+  </div>
+</div>
+

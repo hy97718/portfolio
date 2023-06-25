@@ -1,0 +1,36 @@
+<div class="incomes-form">
+  <div class="container">
+    <div class="income-header">
+      <h1>入金記録一覧</h1>
+      <%= link_to new_location_income_path do %>
+        <i class="fa fa-plus-circle">新規作成</i>
+      <% end %>
+    </div>
+    <% @incomes.each do |income| %>
+      <table class="table is-fullwidth is-hoverable" >
+        <tbody>
+          <tr>
+            <td><%= income.income_day %></td>
+            <td>
+              <%= link_to location_income_path(@location, income) do %>
+                <%= income.income_name %>
+              <% end %>
+            </td>
+            <td>
+              <% if income.income_money.present? %>
+                <%= "#{income.income_money.to_s(:delimited)}円" %>
+              <% end %>
+            </td>
+            <td><%= income.income_memo %></td>
+            <td>
+              <%= link_to edit_location_income_path(@location, income) do %>
+                編集
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    <%= link_to "出金記録一覧へ", location_expenses_path, class: "button is-light is-info" %>
+  </div>
+</div>
