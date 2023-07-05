@@ -12,6 +12,10 @@
         [["現金", "現金"], ["銀行口座", "銀行口座"], ["クレジットカード", "クレジットカード"], ["証券口座", "証券口座"], ["電子マネー", "電子マネー"], ["その他", "その他"]],
         include_blank: "選択して下さい", class: "select-box" %>
       </div>
+      <div class="field">
+        <%= f.label :max_expense, "上限金額", class: "label" %>
+        <%= f.text_field :max_expense, placeholder:"後からでも設定できます", class: "input" %>
+      </div>
       <%= f.submit "作成", class: "button is-success" %>
       <%= link_to "戻る", :back, class: "button is-light" %>
     <% end %>

@@ -8,3 +8,9 @@
     <p class="alert"><%= alert %></p>
   </div>
 <% end %>
+<% if flash[:warn] %>
+  <div class="notification">
+    <p class="warn"><%= warn %></p>
+  </div>
+<% end %>
+

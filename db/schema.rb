@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_17_020009) do
+ActiveRecord::Schema.define(version: 2023_06_27_023618) do
+
+  create_table "dashboards", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_dashboards_on_user_id"
+  end
 
   create_table "expenses", force: :cascade do |t|
     t.string "expense_name"
@@ -23,6 +30,21 @@ ActiveRecord::Schema.define(version: 2023_06_17_020009) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["location_id"], name: "index_expenses_on_location_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "fixed_costs", force: :cascade do |t|
+    t.string "fixed_cost_name"
+    t.string "recurring_period"
+    t.integer "recurring_day"
+    t.integer "fixed_cost_money"
+    t.date "recurring_start_date"
+    t.date "recurring_end_date"
+    t.integer "user_id"
+    t.integer "location_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location_id"], name: "index_fixed_costs_on_location_id"
+    t.index ["user_id"], name: "index_fixed_costs_on_user_id"
   end
 
   create_table "incomes", force: :cascade do |t|
@@ -44,7 +66,15 @@ ActiveRecord::Schema.define(version: 2023_06_17_020009) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "max_expense"
     t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,9 +91,13 @@ ActiveRecord::Schema.define(version: 2023_06_17_020009) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "dashboards", "users"
   add_foreign_key "expenses", "locations"
   add_foreign_key "expenses", "users"
+  add_foreign_key "fixed_costs", "locations"
+  add_foreign_key "fixed_costs", "users"
   add_foreign_key "incomes", "locations"
   add_foreign_key "incomes", "users"
   add_foreign_key "locations", "users"
+  add_foreign_key "searches", "users"
 end

@@ -1,3 +1,4 @@
+<% provide(:title, "Locations") %>
 <div class="location-container">
   <%= render 'devise/shared/search_form' %>
   <div class="container">
@@ -13,26 +14,7 @@
           <tr>
             <td>
               <%= link_to location_incomes_path(location.id) do %>
-                <div class="location-items">
-                  <div class="location-item">
-                    <% if location.location_name == "現金" %>
-                      <%= image_tag "cash.png", size: "50x50" %>
-                    <% elsif location.location_name == "銀行口座" %>
-                      <%= image_tag "bank_image.png", size: "50x50" %>
-                    <% elsif location.location_name == "クレジットカード" %>
-                      <%= image_tag "credit-card.png", size: "50x50" %>
-                    <% elsif location.location_name == "証券口座" %>
-                      <%= image_tag "investment.png", size: "50x50" %>
-                    <% elsif location.location_name == "電子マネー" %>
-                      <%= image_tag "electoric-money.png", size: "50x50" %>
-                    <% else %>
-                      <%= image_tag "other-money.png", size: "50x50" %>
-                    <% end %>
-                  </div>
-                  <div class="location-item">
-                    <%= location.location_name %>
-                  </div>
-                </div>
+                <%= render 'devise/shared/location_items', location_name: location.location_name %>
               <% end %>
             </td>
             <td><%= location.asset_name %></td>
@@ -46,6 +28,10 @@
             </td>
             <td>
               <%= link_to "出金", new_location_expense_path(location.id) %>
+            </td>
+            <td>
+              <%= link_to "削除", location_path(location.id), method: :delete, data: {confirm: "資産情報を削除すると支出、収入に関わるデータも削除されます。
+              本当に削除しますか？"} %>
             </td>
             <td>
               残高: <%= number_to_currency(location.balance_money) %>

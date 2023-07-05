@@ -1,5 +1,4 @@
-<h1>expenses#show</h1>
-<p>Find me in app/views/expenses/show.html.erb</p>
+<% provide(:title, @expense.expense_name) %>
 <div class="expenses-form">
   <div class="container">
     <table class="table is-fullwidth is-hoverable" >
@@ -8,7 +7,7 @@
           <td>
             <%= render 'devise/shared/location_items', location_name: @location.location_name %>
           </td>
-          <td><%= @expense.expense_day %></td>
+          <td><%= l @expense.expense_day, formats: :short %></td>
           <td>
             <%= @expense.expense_name %>
           </td>
@@ -18,7 +17,7 @@
             <% end %>
           </td>
           <td><%= @expense.expense_memo %></td>
-          <td><%= @expense.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
+          <td><%= l @expense.created_at %></td>
           <td>
             <%= link_to edit_location_expense_path(@location, @expense) do %>
               編集

@@ -14,6 +14,18 @@ class IncomesController < ApplicationController
     @income = @location.incomes.find(params[:id])
   end
 
+  def monthly_incomes
+    @location = Location.find(params[:location_id])
+    if @location.user == current_user
+      @monthly_incomes = @location.incomes
+      .group("strftime('%Y-%m', income_day)")
+      .sum(:income_money)
+    else
+      flash[:alert] = "不正なアクセスです"
+      redirect_to locations_path
+    end
+  end
+
   def new
     @location = Location.find(params[:location_id])
     @income = @location.incomes.new
@@ -50,8 +62,18 @@ class IncomesController < ApplicationController
     end
   end
 
-  private
+  def destroy
+    @location = Location.find(params[:location_id])
+    @income = @location.incomes.find(params[:id])
+    if @income.destroy
+      redirect_to location_incomes_path, notice: "入金情報を削除しました。"  
+    else
+      flash.now[:alert] = "入金情報の削除に失敗しました。"
+      render action: :index
+    end
+  end
 
+  private
   def income_params
     params.require(:income).permit(:income_name, :income_day, :income_money, :income_memo)
   end

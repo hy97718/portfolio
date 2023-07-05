@@ -17,6 +17,9 @@
         <%= link_to "資産一覧", locations_path, class:"button is-white" %>
       </li>
       <li class="dropdown_item">
+        <%= link_to "総資産", user_dashboards_path(current_user.id), class:"button is-white" %>
+      </li>
+      <li class="dropdown_item">
         <%= link_to "退会", user_path(current_user.id), class:"button is-white", 
           method: :delete, data: {confirm: "本当に削除しますか？"} %>
       </li>
@@ -32,11 +35,11 @@
   </div>
 </div>
 <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', function() {
+  $(document).ready(function() {
   const btn = document.getElementById('dropdown_btn');
   if (btn) {
-    btn.addEventListener('click', function() {
-      this.classList.toggle('is-open');
+    $(btn).on('click', function() {
+      $(this).toggleClass('is-open');
     });
   }
   });

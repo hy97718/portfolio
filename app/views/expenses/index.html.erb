@@ -1,7 +1,14 @@
+<% provide(:title, "#{@location.location_name}のexpense") %>
 <div class="expenses-form">
   <div class="container">
     <div class="expense-header">
-      <h1>出金記録一覧</h1>
+      <h1>
+        <% if @location.asset_name.present? %>
+          <%= "#{@location.asset_name}(#{@location.location_name})の出金記録一覧" %>
+        <% else %>
+          <%= "#{@location.location_name} 出金記録一覧" %>
+        <% end %>
+      </h1>
       <%= link_to new_location_expense_path do %>
         <i class="fa fa-plus-circle">新規作成</i>
       <% end %>
@@ -10,8 +17,12 @@
       <table class="table is-fullwidth is-hoverable" >
         <tbody>
           <tr>
-            <td><%= expense.expense_day %></td>
-            <td><%= expense.expense_name %></td>
+            <td><%= l expense.expense_day, formats: :short %></td>
+            <td>
+              <%= link_to location_expense_path(@location, expense) do %>
+                <%= expense.expense_name %>
+              <% end %>
+            </td>
             <td>
               <% if expense.expense_money.present? %>
                 <%= "#{expense.expense_money.to_s(:delimited)}円" %>
@@ -23,11 +34,27 @@
                 編集
               <% end %>
             </td>
+            <td>
+              <%= link_to "削除", location_expense_path(@location, expense), method: :delete, data: {confirm: "この操作は取り消しできません。本当に削除しますか？"} %>
+            </td>
           </tr>
         </tbody>
       </table>
     <% end %>
-    <%= link_to "出金記録一覧へ", location_incomes_path, class: "button is-light is-info" %>
+    <% if @location.asset_name.present? %>
+      <%= link_to "#{@location.asset_name}(#{@location.location_name})の入金記録一覧へ", location_incomes_path, class: "button is-light is-info" %>
+    <% else %>
+      <%= link_to "#{@location.location_name}の入金記録一覧へ", location_incomes_path, class: "button is-light is-info" %>
+    <% end %>
+    <%=  link_to "#{@location.location_name}の月グラフへ", monthly_expenses_location_expenses_path, class: "button is-light is-info"  %>
+    <div class="graph-container">
+      <%= pie_chart @expenses.group(:expense_name).count %>
+    </div>
+    <div class="expense-footer">
+      <% if @location.max_expense.present? %>
+        <p><%= "設定上限金額(月): #{@location.max_expense.to_s(:delimited)}円" %></p>
+      <% end %>
+    </div>
   </div>
 </div>
 

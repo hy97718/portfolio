@@ -5,8 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :locations, dependent: :destroy
-  has_many :incomes, dependent: :destroy
-  has_many :expenses, dependent: :destroy
+  has_many :incomes, through: :locations, dependent: :destroy
+  has_many :expenses, through: :locations, dependent: :destroy
+  has_many :fixed_costs, dependent: :destroy
+  has_many :dashboards, dependent: :destroy
+  has_many :searches
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|

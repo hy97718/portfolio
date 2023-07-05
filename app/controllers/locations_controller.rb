@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.includes(:incomes, :expenses).where(user_id: current_user.id)
+    @locations = Location.includes(:incomes, :expenses).
+    where(user_id: current_user.id).order(:location_name)
   end
 
   def new
@@ -35,8 +36,18 @@ class LocationsController < ApplicationController
     end
   end
 
+  def destroy
+    @location = Location.find(params[:id])
+    if @location.destroy
+      redirect_to locations_path, notice: "資産情報を削除しました。"  
+    else
+      flash.now[:alert] = "資産情報の削除に失敗しました。"
+      render action: :index
+    end
+  end
+
   private
     def location_params
-      params.require(:location).permit(:asset_name,:location_name)
+      params.require(:location).permit(:asset_name,:location_name, :max_expense)
     end
 end

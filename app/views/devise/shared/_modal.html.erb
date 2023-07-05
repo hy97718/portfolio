@@ -1,0 +1,32 @@
+<div id="message-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">出金</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <h2 id="message-text"></h2>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">OK</button>
+      <button class="button">キャンセル</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    const message = '<%= flash[:warn] %>';
+    if (message) {
+      $("#message-text").text(message);
+      $("#message-modal").addClass("is-active");
+    }
+    $(".modal-close, .button").click(function() {
+      $("#message-modal").removeClass("is-active");
+    });
+  });
+</script>
+

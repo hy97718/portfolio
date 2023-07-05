@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KakeiboApp</title>
+    <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -15,6 +15,7 @@
 
   <body>
     <%= render '/devise/shared/header' %>
+    <%= render '/devise/shared/modal' %>
     <%= yield %>
     <%= render '/devise/shared/footer' %>
   </body>

@@ -1,6 +1,6 @@
 <div class="searchForm-container">
   <div class="search-field">
-    <%= form_with(url: searches_path, method: :get) do |form| %>
+    <%= form_with(url: user_searches_path(current_user), method: :get) do |form| %>
       <%= form.text_field :keyword, placeholder: "検索キーワードを入力", class: "input" %>
       <%= form.submit "検索", class: "button is-light is-success" %>
     <% end %>

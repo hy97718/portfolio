@@ -1,0 +1,32 @@
+<% provide(:title, "Dashboard") %>
+<div class="dashBoard-container">
+  <div class="container">
+    <div class="message-container">
+      <div class="message">
+        <p>
+          おめでとうございます！目標貯金額を達成しました！<br>
+          目標金額はいつでも変更できます。<br>
+          新しく設定して更にお金を貯めましょう！
+        </p>
+      </div>
+      <div class="message-image"><%= image_tag "celebration.png", size: "300x300" %></div>
+    </div>
+    <div class="dashBoard-container">
+      <p>総収入: <%= @total_income %></p>
+      <%= pie_chart Income.group(:income_name).count %>
+      <p>総支出: <%= @total_expense %></p>
+      <%= pie_chart Expense.group(:expense_name).count %>
+      <p>総資産: <%= @user_assets %></p>
+      <%= pie_chart [["総収入", @total_income], ["総支出", @total_expense]] %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    if (<%= @user_assets.to_i %> >= <%= current_user.savings_target.to_i %>) {
+      $('.message-container').addClass('show');
+    }
+  });
+</script>
+

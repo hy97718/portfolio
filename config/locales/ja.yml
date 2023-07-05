@@ -1,4 +1,9 @@
 ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%Y/%m/%d"
+
   activerecord:
     attributes:
       user:
@@ -16,4 +21,5 @@ ja:
         income_day: 入金日
         income_money: 入金の金額
         income_memo: 入金メモ
+
 

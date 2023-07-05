@@ -13,3 +13,22 @@
   font-size: 26px;
   font-weight: bold;
 }
+.expense-footer p{
+  position: fixed;
+  bottom: 20px;
+  right: 35px;
+  font-size: 20px;
+  border-bottom: 3px solid red;
+}
+.monthly-container {
+  padding-top: 100px;
+}
+.monthly-header {
+  display: flex;
+  justify-content: space-between;
+}
+.monthly-header h1 {
+  font-size: 30px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
