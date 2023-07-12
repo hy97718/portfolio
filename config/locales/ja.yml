@@ -22,4 +22,10 @@ ja:
         income_money: 入金の金額
         income_memo: 入金メモ
 
+      expense:
+        expense_name: 出金名
+        expese_day: 出金日
+        expense_money: 出金の金額
+        expense_memo: 出金メモ
+
 

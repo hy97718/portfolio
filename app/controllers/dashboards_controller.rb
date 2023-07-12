@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
       @user_assets = @total_income - @total_expense
       @assets_data = [
         { name: '総収入', y: @total_income },
-        { name: '総支出', y: @total_expense }
+        { name: '総支出', y: @total_expense },
       ]
     else
       flash[:alert] = "不正なアクセスです"

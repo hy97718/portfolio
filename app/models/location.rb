@@ -20,14 +20,14 @@ class Location < ApplicationRecord
   def check_max_expense(expense)
     month = expense.expense_day.strftime("%Y-%m")
     expense_total = monthly_expense_total(month)
-    if self.max_expense.present? && expense_total >= self.max_expense
-      "上限金額を超えてしまいました。ここから挽回しましょう!" 
-    elsif self.max_expense.present? && expense_total >= self.max_expense * 0.8
-      "上限金額の8割になりました。気を引き締めましょう!" 
-    elsif self.max_expense.present? && expense_total >= self.max_expense * 0.5
-      "設定した上限金額の半分を超えました。使いすぎに気をつけましょう！！" 
+    if max_expense.present? && expense_total >= max_expense
+      "上限金額を超えてしまいました。ここから挽回しましょう!"
+    elsif max_expense.present? && expense_total >= max_expense * 0.8
+      "上限金額の8割になりました。気を引き締めましょう!"
+    elsif max_expense.present? && expense_total >= max_expense * 0.5
+      "設定した上限金額の半分を超えました。使いすぎに気をつけましょう！！"
     else
-      "#{self.location_name}の出金が登録されました。" 
+      "#{location_name}の出金が登録されました。"
     end
-  end  
+  end
 end

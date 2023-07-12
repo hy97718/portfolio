@@ -22,14 +22,14 @@ class User < ApplicationRecord
     email == 'guest@example.com'
   end
 
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
 
   validates :username, presence: true
-  validates :savings_target, numericality: { greater_than_or_equal_to: 0, only_integer: true },
-    allow_blank: true
+  validates :savings_target, numericality: { greater_than_or_equal_to: 0, only_integer: true }, allow_blank: true
   validates :email, presence: true, uniqueness: true, on: :acount_update
-  validates :password, format: { with: VALID_PASSWORD_REGEX, 
-    message: "は半角英数を両方含む必要があります" }, 
-    confirmation: true, on: :acount_update
+  validates :password,
+  format: { with: VALID_PASSWORD_REGEX, message: "は半角英数を両方含む必要があります" },
+  confirmation: true,
+  on: :acount_update
   validates :password_confirmation, presence: true, on: :acount_update
 end

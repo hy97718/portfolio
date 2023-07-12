@@ -17,9 +17,8 @@ class ExpensesController < ApplicationController
   def monthly_expenses
     @location = Location.find(params[:location_id])
     if @location.user == current_user
-      @monthly_expenses = @location.expenses
-      .group("strftime('%Y-%m', expense_day)")
-      .sum(:expense_money)
+      @monthly_expenses = @location.expenses.
+        group("strftime('%Y-%m', expense_day)").sum(:expense_money)
     else
       flash[:alert] = "不正なアクセスです"
       redirect_to locations_path
@@ -39,7 +38,7 @@ class ExpensesController < ApplicationController
       redirect_to location_expenses_path
       @message = @location.check_max_expense(@expense)
       if @message.present?
-        flash[:warn] = @message 
+        flash[:warn] = @message
       end
     else
       flash.now[:alert] = "#{@location.location_name}出金を登録できませんでした。"
@@ -62,7 +61,7 @@ class ExpensesController < ApplicationController
       redirect_to location_expenses_path
       @message = @location.check_max_expense(@expense)
       if @message.present?
-        flash[:warn] = @message 
+        flash[:warn] = @message
       end
     else
       flash.now[:alert] = "出金の情報を更新できませんでした。"
@@ -74,7 +73,7 @@ class ExpensesController < ApplicationController
     @location = Location.find(params[:location_id])
     @expense = @location.expenses.find(params[:id])
     if @expense.destroy
-      redirect_to location_expenses_path, notice: "出金情報を削除しました。"  
+      redirect_to location_expenses_path, notice: "出金情報を削除しました。"
     else
       flash.now[:alert] = "出金情報の削除に失敗しました。"
       render action: :index
@@ -82,6 +81,7 @@ class ExpensesController < ApplicationController
   end
 
   private
+
   def expense_params
     params.require(:expense).permit(:expense_name, :expense_day, :expense_money, :expense_memo)
   end
