@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "Incomes", type: :request do
   let(:user) { create(:user) }
   let(:location) { create(:location, user: user) }
-  let!(:income) { create(:income, location: location) }
+  let!(:income) { create(:income, location: location, user: user) }
   let(:another_user) { create(:another_user) }
   let(:another_location) { create(:location, user: another_user) }
-  let!(:another_income) { create(:income, location: another_location) }
+  let!(:another_income) { create(:income, location: another_location, user: another_user) }
 
   describe "GET #index" do
     before do

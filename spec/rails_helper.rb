@@ -62,6 +62,14 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.include Devise::Test::IntegrationHelpers, type: :request
+
+  config.include Devise::Test::IntegrationHelpers, type: :system
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :remote_chrome
+    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    Capybara.app_host = "http://localhost:3000"
+  end
 end
 
 require 'capybara/rspec'

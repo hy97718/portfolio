@@ -3,6 +3,7 @@ FactoryBot.define do
     sequence(:username) { |n| "テストユーザー#{n}" }
     sequence(:email) { |n| "test#{n}@example.com" }
     password { "password" }
+    savings_target { 2000 }
   end
 
   factory :another_user, class: User do
