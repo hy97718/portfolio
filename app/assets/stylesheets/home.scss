@@ -28,3 +28,31 @@
   width: 200px;
   height: 200px;
 }
+.main-contents {
+  margin-top: 100px;
+  font-family: 'Zen Kurenaido';
+  font-size: 20px;
+}
+.main-contents h2 {
+  margin-bottom: 40px;
+  border-bottom: 3px solid lightblue;
+}
+.description {
+  padding-bottom: 20px;
+}
+@media (max-width: 1023px) {
+  .firstView-image {
+    display: none;
+  }
+  .firstView-mainImage {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .firstView-image {
+    display: none;
+  }
+  .firstView-mainImage {
+    display: none;
+  }
+}

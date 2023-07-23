@@ -25,9 +25,9 @@ RSpec.describe DashboardsController, type: :request do
         expect(response.body).to include("総支出: #{controller.instance_variable_get(:@total_expense)}")
       end
 
-      it "@user_asstesが取得できること" do
-        expect(response.body).to include("総支出: #{controller.instance_variable_get(:@user_assets)}")
-      end
+      it "@user_assetsが取得できること" do
+        expect(response.body).to include("総資産: #{controller.instance_variable_get(:@user_assets)}")
+      end      
     end
 
     context "ユーザーがログインしていない場合" do

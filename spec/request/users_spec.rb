@@ -31,7 +31,7 @@ RSpec.describe "Users", type: :request do
         end
 
         it 'savings_targetが取得できること' do
-          expect(response.body).to include(user.savings_target.to_s)
+          expect(response.body).to include("#{user.savings_target.to_s(:delimited)}円")
         end
       end
     end

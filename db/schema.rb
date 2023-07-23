@@ -32,21 +32,6 @@ ActiveRecord::Schema.define(version: 2023_06_27_023618) do
     t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
-  create_table "fixed_costs", force: :cascade do |t|
-    t.string "fixed_cost_name"
-    t.string "recurring_period"
-    t.integer "recurring_day"
-    t.integer "fixed_cost_money"
-    t.date "recurring_start_date"
-    t.date "recurring_end_date"
-    t.integer "user_id"
-    t.integer "location_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["location_id"], name: "index_fixed_costs_on_location_id"
-    t.index ["user_id"], name: "index_fixed_costs_on_user_id"
-  end
-
   create_table "incomes", force: :cascade do |t|
     t.string "income_name"
     t.integer "user_id", null: false
@@ -94,8 +79,6 @@ ActiveRecord::Schema.define(version: 2023_06_27_023618) do
   add_foreign_key "dashboards", "users"
   add_foreign_key "expenses", "locations"
   add_foreign_key "expenses", "users"
-  add_foreign_key "fixed_costs", "locations"
-  add_foreign_key "fixed_costs", "users"
   add_foreign_key "incomes", "locations"
   add_foreign_key "incomes", "users"
   add_foreign_key "locations", "users"

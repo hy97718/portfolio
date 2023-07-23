@@ -16,16 +16,16 @@
 i.fa.fa-plus-circle {
   font-size: 26px;
 }
-.select-box {
-  height: 50px;
-  width: 100%;
+.field:not(:last-child) {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+.field select {
+  height: 40px;
   border-radius: 5px;
   border: 0.5px solid gray;
   box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-}
-.location-field {
-  display: flex;
-  flex-direction: column;
 }
 table  {
   table-layout: fixed;

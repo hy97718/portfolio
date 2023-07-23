@@ -1,6 +1,14 @@
 <% provide(:title, "Dashboard") %>
 <div class="dashBoard-container">
   <div class="container">
+    <div class="dashBoard-container">
+      <p>総収入: <%= @total_income %></p>
+      <%= pie_chart Income.group(:income_name).count %>
+      <p>総支出: <%= @total_expense %></p>
+      <%= pie_chart Expense.group(:expense_name).count %>
+      <p>総資産: <%= @user_assets %></p>
+      <%= pie_chart [["総収入", @total_income], ["総支出", @total_expense]] %>
+    </div>
     <div class="message-container">
       <div class="message">
         <p>
@@ -10,14 +18,6 @@
         </p>
       </div>
       <div class="message-image"><%= image_tag "celebration.png", size: "300x300" %></div>
-    </div>
-    <div class="dashBoard-container">
-      <p>総収入: <%= @total_income %></p>
-      <%= pie_chart Income.group(:income_name).count %>
-      <p>総支出: <%= @total_expense %></p>
-      <%= pie_chart Expense.group(:expense_name).count %>
-      <p>総資産: <%= @user_assets %></p>
-      <%= pie_chart [["総収入", @total_income], ["総支出", @total_expense]] %>
     </div>
   </div>
 </div>

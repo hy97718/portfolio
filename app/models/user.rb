@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :locations, dependent: :destroy
   has_many :incomes, through: :locations, dependent: :destroy
   has_many :expenses, through: :locations, dependent: :destroy
-  has_many :fixed_costs, dependent: :destroy
   has_many :dashboards, dependent: :destroy
   has_many :searches
 
