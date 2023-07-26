@@ -2,6 +2,8 @@
   "name": "kakeibo-app",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -16,8 +18,6 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/core": "^7.22.9",
-    "@babel/plugin-proposal-private-methods": "^7.18.6",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
     "webpack-dev-server": "^3"
   }
 }
