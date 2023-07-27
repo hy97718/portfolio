@@ -47,6 +47,9 @@
   .firstView-mainImage {
     display: none;
   }
+  .firstView-title {
+    font-size: 40px;
+  }
 }
 @media (max-width: 700px) {
   .firstView-image {
@@ -54,5 +57,8 @@
   }
   .firstView-mainImage {
     display: none;
+  }
+  .firstView-title {
+    font-size: 30px;
   }
 }

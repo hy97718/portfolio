@@ -41,3 +41,15 @@ td {
 .location-items {
   margin-left: 10px;
 }
+table td:not([align]), table th:not([align]) {
+  vertical-align: middle;
+}
+
+@media (max-width: 700px) {
+  .location-header h1 {
+    font-size: 20px;
+  }
+  i.fa.fa-plus-circle {
+    font-size: 20px;
+  }
+}

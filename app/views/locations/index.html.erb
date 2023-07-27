@@ -18,23 +18,31 @@
               <% end %>
             </td>
             <td><%= location.asset_name %></td>
+            <td colspan="2" >
+              残高: <%= number_to_currency(location.balance_money) %>
+            </td>
+          </tr>
+          <tr>
             <td>
-              <%= link_to edit_location_path(location.id) do %>
-                <i class="fas fa-edit">編集</i>
+              <%= link_to new_location_income_path(location.id) do %>
+                <i class="fas fa-plus">入金</i>
               <% end %>
             </td>
             <td>
-              <%= link_to "入金", new_location_income_path(location.id) %>
+              <%= link_to new_location_expense_path(location.id) do %>
+                <i class="fa fa-minus">出金</i>
+              <% end %>
             </td>
             <td>
-              <%= link_to "出金", new_location_expense_path(location.id) %>
+              <%= link_to edit_location_path(location.id) do %>
+                <i class="fas fa-pencil-alt">編集</i>
+              <% end %>
             </td>
             <td>
-              <%= link_to "削除", location_path(location.id), method: :delete, data: {confirm: "資産情報を削除すると支出、収入に関わるデータも削除されます。
-              本当に削除しますか？"} %>
-            </td>
-            <td>
-              残高: <%= number_to_currency(location.balance_money) %>
+              <%= link_to location_path(location.id), method: :delete, data: {confirm: "資産情報を削除すると支出、収入に関わるデータも削除されます。
+              本当に削除しますか？"} do %>
+                <i class="fas fa-trash-alt">削除</i>
+              <% end %>
             </td>
           </tr>
         </tbody>

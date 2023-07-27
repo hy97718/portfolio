@@ -8,4 +8,8 @@ module ApplicationHelper
       "#{page_title} - #{BASE_TITLE}"
     end
   end
+
+  def guest_user?
+    current_user&.guest?
+  end
 end

@@ -19,10 +19,12 @@
       <li class="dropdown_item">
         <%= link_to "総資産", user_dashboards_path(current_user.id), class:"button is-white" %>
       </li>
-      <li class="dropdown_item">
-        <%= link_to "退会", user_path(current_user.id), class:"button is-white", 
-          method: :delete, data: {confirm: "本当に削除しますか？"} %>
-      </li>
+      <% unless guest_user? %>
+        <li class="dropdown_item">
+          <%= link_to "退会", user_path(current_user.id), class:"button is-white", 
+            method: :delete, data: {confirm: "本当に削除しますか？"} %>
+        </li>
+      <% end %>
     <% else %>
       <li class="dropdown_item">
         <%= link_to "ログイン", new_user_session_path, class: "button is-white" %>

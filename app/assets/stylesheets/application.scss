@@ -136,6 +136,9 @@ footer {
   .div .navbar-item {
     margin-bottom: 20px;
   }
+  .navbar-item span {
+    font-size: 28px;
+  }
   .navbar-dropdown {
     display: none;
   }
@@ -143,11 +146,29 @@ footer {
     display: block;
     width: 50%;
   }
+  .navbar-left {
+    padding-left : 15px;
+  }
+  .footer_fixed_btn .button{
+    position: fixed;
+    bottom: 50px;
+    width: 80%;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+  }
 }
 
 @media (max-width: 700px) {
   .navbar-dropdown {
     display: none;
+  }
+  .navbar-item span {
+    font-size: 25px;
+  }
+  .navbar-left {
+    padding-left : 10px;
   }
 }
 
