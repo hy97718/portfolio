@@ -1,3 +1,4 @@
+<% provide(:title, "#{@income.income_name}の編集") %>
 <div class="incomes-form">
   <div class="container">
     <%= form_with model: [@location, @income], local: true do |f| %>

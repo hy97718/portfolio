@@ -1,3 +1,4 @@
+<% provide(:title, "#{@user.username}さんの個人情報編集") %>
 <div class="user-edit">
   <div class="container">
     <%= form_with model: @user,local: true do |f| %>
