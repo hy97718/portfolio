@@ -48,10 +48,8 @@ ActiveRecord::Schema.define(version: 2023_07_30_032152) do
     t.string "asset_name"
     t.string "location_name"
     t.integer "max_expense"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -80,6 +78,5 @@ ActiveRecord::Schema.define(version: 2023_07_30_032152) do
   add_foreign_key "expenses", "users"
   add_foreign_key "incomes", "locations"
   add_foreign_key "incomes", "users"
-  add_foreign_key "locations", "users"
   add_foreign_key "searches", "users"
 end
