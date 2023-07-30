@@ -1,5 +1,5 @@
 module ApplicationHelper
-  BASE_TITLE = "Tyokinbo".freeze
+  BASE_TITLE = "Chokinbo".freeze
 
   def full_title(page_title)
     if page_title.blank?
