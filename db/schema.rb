@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_27_031045) do
+ActiveRecord::Schema.define(version: 2023_06_26_022243) do
 
   create_table "dashboards", force: :cascade do |t|
     t.integer "user_id"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 2023_07_27_031045) do
     t.date "income_day"
     t.integer "income_money"
     t.string "income_memo"
+    t.integer "location_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "location_id", null: false
     t.index ["location_id"], name: "index_incomes_on_location_id"
     t.index ["user_id"], name: "index_incomes_on_user_id"
   end
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 2023_07_27_031045) do
   create_table "locations", force: :cascade do |t|
     t.string "asset_name"
     t.string "location_name"
+    t.integer "max_expense"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "max_expense"
     t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
