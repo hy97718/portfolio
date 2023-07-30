@@ -6,17 +6,17 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context "引数が空文字の場合" do
       let(:page_title) { "" }
-      it { is_expected.to eq("Tyokinbo") }
+      it { is_expected.to eq("Chokinbo") }
     end
 
     context "引数がnilの場合" do
       let(:page_title) { nil }
-      it { is_expected.to eq("Tyokinbo") }
+      it { is_expected.to eq("Chokinbo") }
     end
 
     context "引数が存在する場合" do
       let(:page_title) { "sample" }
-      it { is_expected.to eq("sample - Tyokinbo") }
+      it { is_expected.to eq("sample - Chokinbo") }
     end
   end
 end

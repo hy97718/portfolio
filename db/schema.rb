@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2023_07_30_032152) do
   end
 
   create_table "incomes", force: :cascade do |t|
+    t.string "income_name"
     t.integer "user_id", null: false
     t.date "income_day"
     t.integer "income_money"
