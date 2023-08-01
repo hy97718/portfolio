@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   def index
     @location = Location.find(params[:location_id])
     if @location.user == current_user
-      @expenses = @location.expenses.order(expense_day: :desc)
+      @expenses = @location.expenses.includes(:user).order(expense_day: :desc, expense_name: :asc)
     else
       flash[:alert] = "不正なアクセスです"
       redirect_to locations_path
