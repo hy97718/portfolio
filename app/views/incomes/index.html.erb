@@ -44,7 +44,7 @@
     <%= link_to "#{@location.asset_name}(#{@location.location_name})の出金記録一覧へ", location_expenses_path, class: "button is-light is-info" %>
     <%= link_to "#{@location.location_name}の月グラフへ", monthly_incomes_location_incomes_path, class: "button is-light is-info"  %>
     <div class="graph-container">
-      <%= pie_chart @incomes.group(:income_name).count %>
+      <%= pie_chart @income_counts %>
     </div>
   </div>
 </div>

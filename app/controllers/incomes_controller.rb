@@ -3,6 +3,7 @@ class IncomesController < ApplicationController
     @location = Location.find(params[:location_id])
     if @location.user == current_user
       @incomes = @location.incomes.includes(:user).order(income_day: :desc, income_name: :asc)
+      @income_counts = @incomes.group(:income_name).count
     else
       flash[:alert] = "不正なアクセスです"
       redirect_to locations_path
