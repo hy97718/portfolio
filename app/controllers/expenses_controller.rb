@@ -18,8 +18,12 @@ class ExpensesController < ApplicationController
   def monthly_expenses
     @location = Location.find(params[:location_id])
     if @location.user == current_user
-      @monthly_expenses = @location.expenses.
-        group("strftime('%Y-%m', expense_day)").sum(:expense_money)
+      @monthly_expenses = if Rails.env.production? &&
+        ActiveRecord::Base.connection.adapter_name.downcase.start_with?("postgresql")
+                            postgresql_monthly_expenses
+                          else
+                            sqlite_monthly_expenses
+                          end
     else
       flash[:alert] = "不正なアクセスです"
       redirect_to locations_path
@@ -85,5 +89,13 @@ class ExpensesController < ApplicationController
 
   def expense_params
     params.require(:expense).permit(:expense_name, :expense_day, :expense_money, :expense_memo)
+  end
+
+  def postgresql_monthly_expenses
+    @location.expenses.group("to_char(expense_day, 'YYYY/MM')").sum(:expense_money)
+  end
+
+  def sqlite_monthly_expenses
+    @location.expenses.group("strftime('%Y/%m', expense_day)").sum(:expense_money)
   end
 end

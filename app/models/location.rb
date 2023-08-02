@@ -14,12 +14,24 @@ class Location < ApplicationRecord
   end
 
   def monthly_expense_total(month)
-    expenses.where("strftime('%Y-%m', expense_day) = ?", month).sum(:expense_money)
+    year, month_num = month.split("-").map(&:to_i)
+
+    # expensesテーブルからデータを取得
+    expense_records = expenses.where(expense_day: (Date.new(year, month_num, 1)..Date.new(year, month_num, -1)))
+
+    # 取得したレコードのexpense_moneyを合計
+    total_expense = expense_records.sum(:expense_money)
+
+    total_expense
   end
 
   def check_max_expense(expense)
-    month = expense.expense_day.strftime("%Y-%m")
-    expense_total = monthly_expense_total(month)
+    year = expense.expense_day.year
+    month = expense.expense_day.month.to_s.rjust(2, "0")
+    month_str = "#{year}-#{month}"
+
+    expense_total = monthly_expense_total(month_str)
+
     if max_expense.present? && expense_total >= max_expense
       "上限金額を超えてしまいました。ここから挽回しましょう!"
     elsif max_expense.present? && expense_total >= max_expense * 0.8

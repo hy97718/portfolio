@@ -18,8 +18,12 @@ class IncomesController < ApplicationController
   def monthly_incomes
     @location = Location.find(params[:location_id])
     if @location.user == current_user
-      @monthly_incomes = @location.incomes.
-        group("strftime('%Y-%m', income_day)").sum(:income_money)
+      @monthly_incomes = if Rails.env.production? &&
+        ActiveRecord::Base.connection.adapter_name.downcase.start_with?("postgresql")
+                           postgresql_monthly_incomes
+                         else
+                           sqlite_monthly_incomes
+                         end
     else
       flash[:alert] = "不正なアクセスです"
       redirect_to locations_path
@@ -77,5 +81,13 @@ class IncomesController < ApplicationController
 
   def income_params
     params.require(:income).permit(:income_name, :income_day, :income_money, :income_memo)
+  end
+
+  def postgresql_monthly_incomes
+    @location.incomes.group("to_char(income_day, 'YYYY/MM')").sum(:income_money)
+  end
+
+  def sqlite_monthly_incomes
+    @location.incomes.group("strftime('%Y/%m', income_day)").sum(:income_money)
   end
 end
