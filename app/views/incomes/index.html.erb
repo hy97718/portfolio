@@ -3,11 +3,8 @@
   <div class="container">
     <div class="income-header">
       <h1>
-        <% if @location.asset_name.present? %>
-          <%= "#{@location.asset_name}(#{@location.location_name})の入金記録一覧" %>
-        <% else %>
-          <%= "#{@location.location_name} 入金記録一覧" %>
-        <% end %>
+        <%= "#{@location.asset_name}(#{@location.location_name})の" %>
+        <br>入金記録一覧
       </h1>
       <%= link_to new_location_income_path do %>
         <i class="fa fa-plus-circle">新規作成</i>
@@ -29,20 +26,27 @@
               <% end %>
             </td>
             <td><%= income.income_memo %></td>
-            <td>
+          </tr>
+          <tr>
+            <td colspan="2">
               <%= link_to edit_location_income_path(@location, income) do %>
-                編集
+                <i class="fas fa-pencil-alt">編集</i>
               <% end %>
             </td>
-            <td>
-              <%= link_to "削除", location_income_path(@location, income), method: :delete, data: {confirm: "この操作は取り消しできません。本当に削除しますか？"} %>
+            <td colspan="2">
+              <%= link_to location_income_path(@location, income), method: :delete, data: {confirm: "この操作は取り消しできません。
+                本当に削除しますか？"} do %>
+              <i class="fas fa-trash-alt">削除</i>
+              <% end %>
             </td>
           </tr>
         </tbody>
       </table>
     <% end %>
-    <%= link_to "#{@location.asset_name}(#{@location.location_name})の出金記録一覧へ", location_expenses_path, class: "button is-light is-info" %>
-    <%= link_to "#{@location.location_name}の月グラフへ", monthly_incomes_location_incomes_path, class: "button is-light is-info"  %>
+    <div class="button-container">
+      <%= link_to "#{@location.asset_name}(#{@location.location_name})の出金記録一覧へ", location_expenses_path, class: "button is-info" %>
+      <%= link_to "#{@location.location_name}の月グラフへ", monthly_incomes_location_incomes_path, class: "button is-info"  %>
+    </div>
     <div class="graph-container">
       <%= pie_chart @income_counts %>
     </div>

@@ -32,3 +32,21 @@
   margin-bottom: 40px;
   font-weight: bold;
 }
+@media (max-width: 700px) {
+  .expense-header h1 {
+    font-size: 20px;
+  }
+  i.fa.fa-plus-circle {
+    font-size: 20px;
+  }
+  .button-container {
+    flex-wrap: wrap;
+    row-gap:20px
+  }
+  .expense-footer p{
+    bottom: 70px;
+    right: 35px;
+    font-size: 20px;
+    border-bottom: 3px solid red;
+  }
+}

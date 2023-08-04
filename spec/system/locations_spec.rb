@@ -23,10 +23,18 @@ RSpec.describe "Locations", type: :system do
       it "リンクを全て表示できること" do
         locations.all? do |location|
           expect(page).to have_link("新規作成", href: new_location_path)
-          expect(page).to have_link("編集", href: edit_location_path(location))
-          expect(page).to have_link("入金", href: new_location_income_path(location))
-          expect(page).to have_link("出金", href: new_location_expense_path(location))
-          expect(page).to have_link("削除", href: location_path(location))
+          #入金リンク
+          expect(page).to have_link(nil, href: new_location_income_path(location))
+          expect(page).to have_selector("i.fas.fa-plus") 
+          # 出金リンク
+          expect(page).to have_link(nil, href: new_location_expense_path(location))
+          expect(page).to have_selector("i.fa.fa-minus") 
+          # 編集リンク
+          expect(page).to have_link(nil, href: edit_location_path(location))
+          expect(page).to have_selector("i.fas.fa-pencil-alt") 
+          #削除リンク
+          expect(page).to have_link(nil, href: location_path(location))
+          expect(page).to have_selector("i.fas.fa-trash-alt")
         end
       end
     end
@@ -169,7 +177,7 @@ RSpec.describe "Locations", type: :system do
   describe "destroy action" do
     it "資産の削除に成功した場合、一覧ページへリダイレクトされること" do
       visit locations_path
-      click_link "削除", href: location_path(location)
+      click_link nil, href: location_path(location)
       expect(page).to have_current_path(locations_path)
       expect(page).to have_content("資産情報を削除しました。")
     end

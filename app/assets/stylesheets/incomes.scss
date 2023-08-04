@@ -13,3 +13,34 @@
   font-size: 26px;
   font-weight: bold;
 }
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+}
+table.table {
+  margin: auto;
+  width: 80%;
+}
+table td:not([align]), table th:not([align]) {
+  text-align: center;
+}
+.back-button {
+  margin: auto;
+  width: 80%;
+  margin-top: 20px;
+}
+.graph-container {
+  margin-top: 50px;
+}
+@media (max-width: 700px) {
+  .income-header h1 {
+    font-size: 20px;
+  }
+  i.fa.fa-plus-circle {
+    font-size: 20px;
+  }
+  .button-container {
+    flex-wrap: wrap;
+    row-gap:20px
+  }
+}
