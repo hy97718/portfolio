@@ -46,9 +46,7 @@ body {
 .navbar-left {
   padding-left : 40px;
 }
-.navbar-right {
-  padding-left: 30px;
-}
+
 .navbar-item {
   color: white;
   font-size: 30px;
@@ -68,7 +66,7 @@ body {
   color: #fff;
 }
 .dropdown {
-  margin: 0 70px 0 0;
+  padding: 0 60px 0 60px;
   position: relative;
 }
 .menu-bar {
@@ -99,8 +97,7 @@ body {
   overflow: hidden;
   position: absolute;
   top: 60px;
-  left: -40px;
-  padding: 20 5px;
+  left: -50px;
 }
 .dropdown_list { 
   margin: 0;
