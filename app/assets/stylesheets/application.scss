@@ -66,7 +66,7 @@ body {
   color: #fff;
 }
 .dropdown {
-  padding: 0 60px 0 60px;
+  padding: 0 30px;
   position: relative;
 }
 .menu-bar {
@@ -82,7 +82,7 @@ body {
 }
 .dropdown_btn {
   display: block;
-  width: 20px;
+  width: 120px;
   padding: 20px;
   background: none;
   border: 0;
@@ -97,7 +97,6 @@ body {
   overflow: hidden;
   position: absolute;
   top: 60px;
-  left: -50px;
 }
 .dropdown_list { 
   margin: 0;
