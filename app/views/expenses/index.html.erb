@@ -24,6 +24,8 @@
                 <%= expense.expense_name %>
               <% end %>
             </td>
+          </tr>
+          <tr>
             <td>
               <% if expense.expense_money.present? %>
                 <%= "#{expense.expense_money.to_s(:delimited)}円" %>
@@ -32,12 +34,12 @@
             <td><%= expense.expense_memo %></td>
           </tr>
           <tr>
-            <td colspan="2">
+            <td>
               <%= link_to edit_location_expense_path(@location, expense) do %>
                 <i class="fas fa-pencil-alt">編集</i>
               <% end %>
             </td>
-            <td colspan="2">
+            <td>
               <%= link_to location_expense_path(@location, expense), method: :delete, data: {confirm: "この操作は取り消しできません。
                 本当に削除しますか？"} do %>
               <i class="fas fa-trash-alt">削除</i>
@@ -61,4 +63,3 @@
     </div>
   </div>
 </div>
-

@@ -44,9 +44,11 @@
     row-gap:20px
   }
   .expense-footer p{
-    bottom: 70px;
-    right: 35px;
+    top: 100px;
+    left: 20px;
     font-size: 20px;
-    border-bottom: 3px solid red;
+    color: rgba(249, 3, 3, 0.669);
+    font-weight: bold;
+    border-bottom: none;
   }
 }
