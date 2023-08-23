@@ -3,9 +3,9 @@
   <div class="container">
     <div class="dashBoard-container">
       <p>総収入: <%= @total_income %></p>
-      <%= pie_chart Income.group(:income_name).count %>
+      <%= pie_chart Income.group(:income_name).sum(:income_money) %>
       <p>総支出: <%= @total_expense %></p>
-      <%= pie_chart Expense.group(:expense_name).count %>
+      <%= pie_chart Expense.group(:expense_name).sum(:expense_money) %>
       <p>総資産: <%= @user_assets %></p>
       <%= pie_chart [["総収入", @total_income], ["総支出", @total_expense]] %>
     </div>
