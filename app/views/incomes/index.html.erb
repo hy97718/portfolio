@@ -1,0 +1,56 @@
+<% provide(:title, "#{@location.location_name}のincome") %>
+<div class="incomes-form">
+  <div class="container">
+    <div class="income-header">
+      <h1>
+        <%= "#{@location.asset_name}(#{@location.location_name})の" %>
+        <br>入金記録一覧
+      </h1>
+      <%= link_to new_location_income_path do %>
+        <i class="fa fa-plus-circle">新規作成</i>
+      <% end %>
+    </div>
+    <% @incomes.each do |income| %>
+      <table class="table is-fullwidth is-hoverable" >
+        <tbody>
+          <tr>
+            <td><%= l income.income_day, formats: :short %></td>
+            <td>
+              <%= link_to location_income_path(@location, income) do %>
+                <%= income.income_name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <% if income.income_money.present? %>
+                <%= "#{income.income_money.to_s(:delimited)}円" %>
+              <% end %>
+            </td>
+            <td><%= income.income_memo %></td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to edit_location_income_path(@location, income) do %>
+                <i class="fas fa-pencil-alt">編集</i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to location_income_path(@location, income), method: :delete, data: {confirm: "この操作は取り消しできません。
+                本当に削除しますか？"} do %>
+              <i class="fas fa-trash-alt">削除</i>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    <div class="button-container">
+      <%= link_to "#{@location.asset_name}(#{@location.location_name})の出金記録一覧へ", location_expenses_path, class: "button is-info" %>
+      <%= link_to "#{@location.location_name}の月グラフへ", monthly_incomes_location_incomes_path, class: "button is-info"  %>
+    </div>
+    <div class="graph-container">
+      <%= pie_chart @income_counts %>
+    </div>
+  </div>
+</div>

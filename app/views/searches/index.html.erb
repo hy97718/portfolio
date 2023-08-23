@@ -1,0 +1,54 @@
+<% provide(:title, "検索結果") %>
+<div class="searches-container">
+  <%= render 'devise/shared/search_form'%>
+  <div class="container">
+    <% if params[:keyword].present? %>
+      <p>検索ワード: <%= params[:keyword] %></p>
+    <% end %>
+    <% if @incomes.present? %>
+      <h2>検索結果</h2>
+      <% @incomes.each do |income| %>
+        <div>入金</div>
+        <table class="table is-fullwidth is-hoverable" >
+          <tbody>
+            <tr>
+              <td><%= income.income_day %></td>
+              <td>
+                <%= link_to income.income_name, location_income_path(income.location, income) %>
+              </td>
+              <td>
+                <% if income.income_money.present? %>
+                  <%= "#{income.income_money.to_s(:delimited)}円" %>
+                <% end %>
+              </td>
+              <td><%= income.income_memo %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    <% elsif @expenses.present? %>
+      <% @expenses.each do |expense| %>
+        <div>出金</div>
+        <table class="table is-fullwidth is-hoverable" >
+          <tbody>
+            <tr>
+              <td><%= expense.expense_day %></td>
+              <td>
+                <%= link_to expense.expense_name, location_expense_path(expense.location, expense) %>
+              </td>
+              <td>
+                <% if expense.expense_money.present? %>
+                  <%= "#{expense.expense_money.to_s(:delimited)}円" %>
+                <% end %>
+              </td>
+              <td><%= expense.expense_memo %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    <% else %>
+      <p>検索結果がありません</p>
+    <% end %>
+    <%= link_to "戻る", :back, class: "button is-light" %>
+  </div>
+</div>

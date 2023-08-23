@@ -1,0 +1,40 @@
+// Place all the styles related to the Dashboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.dashBoard-container {
+  padding-top: 50px;
+}
+.dashBoard-container p {
+  font-size: 20px;
+}
+.dashBoard-header {
+  display: flex;
+  justify-content: space-between;
+}
+.message-container {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+.message {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  font-size: 30px;
+  font-family: 'Zen Kurenaido';
+}
+.message-container.show {
+  width: auto;
+  background-color: whitesmoke;
+  height: 300px;
+  border-radius: 4px;
+  font-size: 30px;
+  opacity: 1;
+  transform: translateY(0);
+}
+.message-container.show p {
+  font-size: 30px;
+  transform: translateY(0);
+}

@@ -1,0 +1,31 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%Y/%m/%d"
+
+  activerecord:
+    attributes:
+      user:
+        username: ユーザー名
+        savings_target: 目標貯金額
+        email: メールアドレス
+        password: パスワード
+
+      location:
+        asset_name: 資産名
+        location_name: 資産場所
+
+      income:
+        income_name: 入金名
+        income_day: 入金日
+        income_money: 入金の金額
+        income_memo: 入金メモ
+
+      expense:
+        expense_name: 出金名
+        expese_day: 出金日
+        expense_money: 出金の金額
+        expense_memo: 出金メモ
+
+

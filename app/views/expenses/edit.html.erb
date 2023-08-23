@@ -1,0 +1,28 @@
+<% provide(:title, "#{@expense.expense_name}の編集") %>
+<div class="expenses-form">
+  <div class="container">
+    <%= form_with model: [@location, @expense], local: true do |f| %>
+    <%= render 'devise/shared/error_messages', resource: @expense %>
+    <div class="field">
+      <%= f.label :expense_name, "出金名", class: "label" %>
+      <%= f.text_field :expense_name, placeholder: "食費、日用品等", class: "input" %>
+    </div>
+    <div class="field">
+      <%= f.label :expense_day, "出金日", class: "label" %>
+      <%= f.date_field :expense_day, class: "input" %>
+    </div>
+    <div class="field">
+      <%= f.label :expense_money, "金額", class: "label" %>
+      <%= f.text_field :expense_money, class: "input" %>
+    </div>
+    <div class="field">
+      <%= f.label :expense_memo, "メモ", class: "label" %>
+      <%= f.text_field :expense_memo, placeholder: "メモ欄です", class: "input" %>
+    </div>
+    <div class="field">
+      <%= f.submit "更新", class: "button is-success" %>
+      <%= link_to "戻る", :back, class: "button is-light" %>
+    </div>
+    <% end %>
+  </div>
+</div>

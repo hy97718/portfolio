@@ -1,0 +1,28 @@
+<% provide(:title, "#{@user.username}さんの個人情報編集") %>
+<div class="user-edit">
+  <div class="container">
+    <%= form_with model: @user,local: true do |f| %>
+      <%= render 'devise/shared/error_messages', resource: @user %>
+      <div class="field">
+        <%= f.label :email, class: "label" %>
+        <%= f.text_field :email, class: "input" %>
+      </div>
+      <%= f.hidden_field :reset_password_token %>
+      <div class="field">
+        <%= f.label :password, "新しいパスワードを入力してください" %><br />
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+        <% end %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "input" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, "確認のため新しいパスワードを入力してください" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+      </div>
+      <div class="field">
+        <%= f.submit "更新", class: "button is-success" %>
+        <%= link_to "戻る", :back, class: "button is-light" %>
+      </div>
+    <% end %>
+  </div>
+</div>

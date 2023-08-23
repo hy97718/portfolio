@@ -1,0 +1,28 @@
+<% provide(:title, "入金作成") %>
+<div class="incomes-form">
+  <div class="container">
+    <%= form_with model: [@location, @income], local: true do |f| %>
+    <%= render 'devise/shared/error_messages', resource: @income %>
+    <div class="field">
+      <%= f.label :income_name, "入金名", class: "label" %>
+      <%= f.text_field :income_name, placeholder: "給与等", class: "input" %>
+    </div>
+    <div class="field">
+      <%= f.label :income_day, "入金日", class: "label" %>
+      <%= f.date_field :income_day, class: "input" %>
+    </div>
+    <div class="field">
+      <%= f.label :income_money, "金額", class: "label" %>
+      <%= f.text_field :income_money, class: "input" %>
+    </div>
+    <div class="field">
+      <%= f.label :income_memo, "メモ", class: "label" %>
+      <%= f.text_field :income_memo, placeholder: "メモ欄です", class: "input" %>
+    </div>
+    <div class="field">
+      <%= f.submit "登録", class: "button is-success" %>
+      <%= link_to "戻る", :back, class: "button is-light" %>
+    </div>
+    <% end %>
+  </div>
+</div>

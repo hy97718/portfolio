@@ -1,0 +1,23 @@
+// Place all the styles related to the searches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.searches-container {
+  padding-top: 100px;
+}
+.search-field {
+  background-color: lightgray;
+  height: 100px;
+}
+.search-field form {
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  padding-top: 30px;
+  width: fit-content;
+  margin: auto;
+}
+.search-field .input {
+  margin-right: 20px;
+}
+
+

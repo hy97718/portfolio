@@ -1,0 +1,16 @@
+<% if flash[:notice] %>
+  <div class="notification is-info">
+    <p class="notice"><%= notice %></p>
+  </div>
+<% end %>
+<% if flash[:alert] %>
+  <div class="notification is-danger">
+    <p class="alert"><%= alert %></p>
+  </div>
+<% end %>
+<% if flash[:warn] %>
+  <div class="notification">
+    <p class="warn"><%= warn %></p>
+  </div>
+<% end %>
+

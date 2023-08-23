@@ -1,0 +1,45 @@
+<% provide(:title, @income.income_name) %>
+<div class="incomes-form">
+  <div class="container">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            <%= render 'devise/shared/location_items', location_name: @location.location_name %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= l @income.income_day, formats: :short %></td>
+        </tr>
+        <tr>
+          <td><%= @income.income_name %></td>
+        </tr>
+        <tr>
+          <td>
+            <% if @income.income_money.present? %>
+              <%= "#{@income.income_money.to_s(:delimited)}円" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= @income.income_memo %></td>
+        </tr>
+        <tr>
+          <td><%= l @income.created_at %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to edit_location_income_path(@location, @income) do %>
+              編集
+            <% end %>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="back-button">
+      <%= link_to "戻る", :back, class: "button is-light" %>
+    </div>
+  </div>
+</div>

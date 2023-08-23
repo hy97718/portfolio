@@ -1,0 +1,54 @@
+// Place all the styles related to the expenses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.expenses-form {
+  padding-top: 100px;
+}
+.expense-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0 30px 0;
+}
+.expense-header h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+.expense-footer p{
+  position: fixed;
+  bottom: 20px;
+  right: 35px;
+  font-size: 20px;
+  border-bottom: 3px solid red;
+}
+.monthly-container {
+  padding-top: 100px;
+}
+.monthly-header {
+  display: flex;
+  justify-content: space-between;
+}
+.monthly-header h1 {
+  font-size: 30px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+@media (max-width: 700px) {
+  .expense-header h1 {
+    font-size: 20px;
+  }
+  i.fa.fa-plus-circle {
+    font-size: 20px;
+  }
+  .button-container {
+    flex-wrap: wrap;
+    row-gap:20px
+  }
+  .expense-footer p{
+    top: 100px;
+    left: 20px;
+    font-size: 20px;
+    color: rgba(249, 3, 3, 0.669);
+    font-weight: bold;
+    border-bottom: none;
+  }
+}

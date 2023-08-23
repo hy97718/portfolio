@@ -1,0 +1,20 @@
+<div class="location-items">
+  <div class="location-item">
+    <% if location_name == "現金" %>
+      <%= image_tag "cash.png", size: "50x50" %>
+    <% elsif location_name == "銀行口座" %>
+      <%= image_tag "bank_image.png", size: "50x50" %>
+    <% elsif location_name == "クレジットカード" %>
+      <%= image_tag "credit-card.png", size: "50x50" %>
+    <% elsif location_name == "証券口座" %>
+      <%= image_tag "investment.png", size: "50x50" %>
+    <% elsif location_name == "電子マネー" %>
+      <%= image_tag "electoric-money.png", size: "50x50" %>
+    <% else %>
+      <%= image_tag "other-money.png", size: "50x50" %>
+    <% end %>
+  </div>
+  <div class="location-item">
+    <%= location_name %>
+  </div>
+</div>

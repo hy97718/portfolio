@@ -1,0 +1,25 @@
+Rails:
+  Enabled: true
+
+# 行の長さの制限を設定します
+Layout/LineLength:
+  Max: 120 
+
+inherit_from:
+  - .rubocop_airbnb.yml
+
+#以下にはrubocopで検証したくないフォルダを指定する
+AllCops:
+    Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - '**/Gemfile'
+    - 'vendor/**/*'
+    - '.git/**/*'
+    - 'lib/tasks/*'
+    - 'path/ruby'
+    - "db/schema.rb"
+    - 'spec/**/*'

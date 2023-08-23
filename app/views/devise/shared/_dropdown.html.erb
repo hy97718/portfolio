@@ -1,0 +1,48 @@
+<div class="dropdown">
+  <button class="dropdown_btn" id="dropdown_btn">
+    <span class="icon is-small is-right"><span class="menu-bar">Menu</span>
+      <i class="fas fa-angle-down"></i>
+    </span>
+  </button>
+  <div class="dropdown_body">
+    <% if user_signed_in? %>
+    <ul class="dropdown_list">
+      <li class="dropdown_item">
+        <%= link_to "ログアウト", destroy_user_session_path, class:"button is-white", method: :delete %>
+      </li>
+      <li class="dropdown_item">
+        <%= link_to "アカウント情報", user_path(current_user.id), class:"button is-white" %>
+      </li>
+      <li class="dropdown_item">
+        <%= link_to "資産一覧", locations_path, class:"button is-white" %>
+      </li>
+      <li class="dropdown_item">
+        <%= link_to "総資産", user_dashboards_path(current_user.id), class:"button is-white" %>
+      </li>
+      <% unless guest_user? %>
+        <li class="dropdown_item">
+          <%= link_to "退会", user_path(current_user.id), class:"button is-white", 
+            method: :delete, data: {confirm: "本当に削除しますか？"} %>
+        </li>
+      <% end %>
+    <% else %>
+      <li class="dropdown_item">
+        <%= link_to "ログイン", new_user_session_path, class: "button is-white" %>
+      </li>
+      <li class="dropdown_item">
+        <%= link_to "新規登録", new_user_registration_path, class: "button is-white" %>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+  const btn = document.getElementById('dropdown_btn');
+  if (btn) {
+    $(btn).on('click', function() {
+      $(this).toggleClass('is-open');
+    });
+  }
+  });
+</script>

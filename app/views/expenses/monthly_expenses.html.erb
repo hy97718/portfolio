@@ -1,0 +1,14 @@
+<% provide(:title, "#{@location.location_name}の月次支出") %>
+<div class="monthly-container">
+  <div class="container">
+    <div class="monthly-header">
+      <h1><%= "#{@location.location_name}の月次支出" %></h1>
+      <%= link_to "戻る", :back, class: "button is-light is-info" %>
+    </div>
+    <% if @monthly_expenses.present? %>
+      <%= column_chart @monthly_expenses %>
+    <% else %>
+      <p>月次の支出データはありません。</p>
+    <% end %>
+  </div>
+</div>

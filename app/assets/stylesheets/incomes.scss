@@ -1,0 +1,46 @@
+// Place all the styles related to the incomes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.incomes-form {
+  padding-top: 100px;
+}
+.income-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0 30px 0;
+}
+.income-header h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+}
+table.table {
+  margin: auto;
+  width: 80%;
+}
+table td:not([align]), table th:not([align]) {
+  text-align: center;
+}
+.back-button {
+  margin: auto;
+  width: 80%;
+  margin-top: 20px;
+}
+.graph-container {
+  margin-top: 50px;
+}
+@media (max-width: 700px) {
+  .income-header h1 {
+    font-size: 20px;
+  }
+  i.fa.fa-plus-circle {
+    font-size: 20px;
+  }
+  .button-container {
+    flex-wrap: wrap;
+    row-gap:20px
+  }
+}

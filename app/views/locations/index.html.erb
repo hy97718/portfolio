@@ -1,0 +1,60 @@
+<% provide(:title, "資産一覧") %>
+<div class="location-container">
+  <%= render 'devise/shared/search_form' %>
+  <div class="container">
+    <div class="location-header">
+      <h1>資産一覧</h1>
+      <%= link_to new_location_path do %>
+        <i class="fa fa-plus-circle">新規作成</i>
+      <% end %>
+    </div>
+    <% @locations.each do |location| %>
+      <table class="table is-fullwidth" >
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to location_incomes_path(location.id) do %>
+                <%= render 'devise/shared/location_items', location_name: location.location_name %>
+              <% end %>
+            </td>
+            <td><%= location.asset_name %></td>
+            <td colspan="2" >
+              残高: <%= number_to_currency(location.balance_money) %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to new_location_income_path(location.id) do %>
+                <i class="fas fa-plus"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to new_location_expense_path(location.id) do %>
+                <i class="fa fa-minus"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to edit_location_path(location.id) do %>
+                <i class="fas fa-pencil-alt"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to location_path(location.id), method: :delete, data: {confirm: "資産情報を削除すると支出、収入に関わるデータも削除されます。
+              本当に削除しますか？"} do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+  <div class="page-description">
+    以下使い方の説明です! <br>
+    1.<i class="fas fa-plus"></i>マークを押すと入金の登録をすることができます。<br>
+    2.<i class="fa fa-minus"></i>マークを押すと出金の登録ができます。<br>
+    3.<i class="fas fa-pencil-alt"></i>マークを押すと登録した資産情報の編集ができます。<br>
+    4.<i class="fas fa-trash-alt"></i>マークを押すと登録した資産情報の削除ができます。<br>
+      ただし、削除したものを元に戻すことはできませんのでご注意ください!
+  </div>
+</div>

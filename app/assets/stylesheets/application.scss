@@ -1,0 +1,173 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import 'bulma';
+@import 'bulma-extensions';
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+  
+}
+body {
+  letter-spacing: 0.1em;
+}
+.notification {
+  margin-top: 68px;
+}
+.notification:not(:last-child){
+	margin-bottom: 0;
+}
+.error-messages {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
+.navbar {
+  background-color: rgb(3, 11, 118);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar-left {
+  padding-left : 40px;
+}
+
+.navbar-item {
+  color: white;
+  font-size: 30px;
+}
+.modal-card-foot {
+  margin-top: 0;
+}
+.top-logo {
+  margin-left: 10px;
+}
+.navbar-item span {
+  font-family: 'Zen Kurenaido';
+  font-weight: bold;
+}
+.button {
+  background-color: rgb(3, 11, 118);
+  color: #fff;
+}
+.dropdown {
+  padding: 0 30px;
+  position: relative;
+}
+.menu-bar {
+  margin-right: 10px;
+  font-size: 30px;
+  font-family: 'Zen Kurenaido';
+}
+.menu-bar:hover {
+  opacity: 0.7;
+}
+.icon {
+  color: #fff;
+}
+.dropdown_btn {
+  display: block;
+  width: 120px;
+  padding: 20px;
+  background: none;
+  border: 0;
+  font-size: 25px;
+  color: #fff;
+}
+.dropdown_body {
+  width: auto;
+  background: #fff;
+  box-shadow: 0 2px 6px 2px rgba(60,64,67,0.149), 0 1px 2px 0 rgba(60,64,67,0.302);
+  border-radius: 4px;
+  overflow: hidden;
+  position: absolute;
+  top: 60px;
+}
+.dropdown_list { 
+  margin: 0;
+  padding: 0;
+}
+.dropdown_item {
+  display: block;
+  text-align: left;
+  border-bottom: 0.5px solid gray;
+}
+.dropdown_item-link:hover {
+  background: #fbfbfb;
+}
+.dropdown_body {
+  display: none;
+}
+.dropdown_btn.is-open + .dropdown_body {
+  display: block;
+  z-index: 4;
+}
+footer {
+  margin-top: 100px;
+}
+.footer_fixed_btn .button{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 25%;
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+@media (max-width: 1023px) {
+  .div .navbar-item {
+    margin-bottom: 20px;
+  }
+  .navbar-item span {
+    font-size: 28px;
+  }
+  .navbar-dropdown {
+    display: none;
+  }
+  div .navbar-item:hover .navbar-dropdown {
+    display: block;
+    width: 50%;
+  }
+  .navbar-left {
+    padding-left : 15px;
+  }
+  .footer_fixed_btn .button{
+    position: fixed;
+    bottom: 50px;
+    width: 80%;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar-dropdown {
+    display: none;
+  }
+  .navbar-item span {
+    font-size: 25px;
+  }
+  .navbar-left {
+    padding-left : 10px;
+  }
+}
+
